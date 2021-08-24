@@ -1,0 +1,20 @@
+version: '3'
+services:
+  vuesplash_web:
+    image: php:7.2-apache
+    build: .
+    volumes:
+      - ./php.ini:/usr/local/etc/php/php.ini
+      - ./web:/var/www/html/vuesplash
+    ports:
+      - 8081:8081
+      - 3000:3000
+  vuesplash_database:
+    image: postgres:11-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - 5434:5432
