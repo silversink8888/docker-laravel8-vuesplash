@@ -2286,6 +2286,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
@@ -11355,10 +11357,10 @@ var render = function() {
             "button",
             {
               staticClass:
-                "my-2 px-4 py-2\n    border-2 border-blue-500 rounded-md\n    bg-gradient-to-b from-blue-600 to-blue-400\n    hover:from-blue-500 hover:to-blue-300 \n    text-white shadow-lg",
+                "my-2 px-4 py-2 w-1/5\n    border-2 border-blue-500 rounded-md\n    bg-gradient-to-b from-blue-600 to-blue-400\n    hover:from-blue-500 hover:to-blue-300 \n    text-white shadow-lg",
               on: { click: _vm.logout }
             },
-            [_vm._v("\n    Logout/\n  ")]
+            [_vm._v("\n    Logout/ feature/機能追加#1\n  ")]
           )
         : _c(
             "RouterLink",
