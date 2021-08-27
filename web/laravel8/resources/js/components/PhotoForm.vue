@@ -10,8 +10,8 @@
 
         <form v-show="! loading" class="form" @submit.prevent="submit">
 
-            <div class="errors" v-if="errors">
-                <ul class="errors.photo">
+            <div class="" v-if="errors">
+                <ul class="text-red-500">
                     <li v-for="msg in errors.photo" :key="msg">{{ msg }}</li>
                 </ul>
             </div>
@@ -25,13 +25,13 @@
                 <input type='file' class="hidden" @change="onFileChange"/>
             </label>
 
-            <output class="form__output" v-if="preview">
+            <output class="" v-if="preview">
                 <img :src="preview" alt="">
             </output>
 
 
-            <div class="form__button">
-                <button type="submit" class="bg-black text-white p-2 m-2">
+            <div class="">
+                <button type="submit" class="w-2/5 bg-black text-white p-2 m-2">
                     Submit
                 </button>
             </div>

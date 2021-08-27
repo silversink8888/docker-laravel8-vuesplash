@@ -3495,11 +3495,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -3533,7 +3528,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return axios.get("/api/photos/?page=".concat(_this.$route.query.page));
+                return axios.get("/api/photos/?page=".concat(_this.page));
 
               case 2:
                 response = _context.sent;
@@ -3564,6 +3559,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var id = _ref.id,
           liked = _ref.liked;
 
+      //  alert('liked : '+ liked);
       if (!this.$store.getters['auth/check']) {
         alert('いいね機能を使うにはログインしてください。');
         return false;
@@ -3585,7 +3581,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.put("/api/ptotos/".concat(id, "/like"));
+                return axios.put("/api/photos/".concat(id, "/like"));
 
               case 2:
                 response = _context2.sent;
@@ -3601,10 +3597,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 _this2.photos = _this2.photos.map(function (photo) {
-                  //      alert(response.data.photo_id);
                   if (photo.id === response.data.photo_id) {
                     photo.likes_count += 1;
-                    photo.likes_count = true;
+                    photo.liked_by_user = true;
                   }
 
                   return photo;
@@ -11985,10 +11980,10 @@ var render = function() {
         },
         [
           _vm.errors
-            ? _c("div", { staticClass: "errors" }, [
+            ? _c("div", {}, [
                 _c(
                   "ul",
-                  { staticClass: "errors.photo" },
+                  { staticClass: "text-red-500" },
                   _vm._l(_vm.errors.photo, function(msg) {
                     return _c("li", { key: msg }, [_vm._v(_vm._s(msg))])
                   }),
@@ -12019,7 +12014,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _vm.preview
-            ? _c("output", { staticClass: "form__output" }, [
+            ? _c("output", {}, [
                 _c("img", { attrs: { src: _vm.preview, alt: "" } })
               ])
             : _vm._e(),
@@ -12035,11 +12030,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form__button" }, [
+    return _c("div", {}, [
       _c(
         "button",
         {
-          staticClass: "bg-black text-white p-2 m-2",
+          staticClass: "w-2/5 bg-black text-white p-2 m-2",
           attrs: { type: "submit" }
         },
         [_vm._v("\n                Submit\n            ")]
@@ -12782,32 +12777,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c(
-      "div",
-      { staticClass: "grid grid-cols-1 md:grid-cols-3 " },
-      _vm._l(_vm.photos, function(photo) {
-        return _c("Photo", {
-          key: photo.id,
-          staticClass: "border ",
-          attrs: { item: photo },
-          on: { click: _vm.onLikeClick }
-        })
-      }),
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "container m-5 mx-auto bg-gray-200" },
-      [
-        _c("Pagination", {
-          attrs: { "current-page": _vm.currentPage, "last-page": _vm.lastPage }
-        })
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    {},
+    [
+      _c(
+        "div",
+        { staticClass: "grid grid-cols-1 md:grid-cols-3" },
+        _vm._l(_vm.photos, function(photo) {
+          return _c("Photo", {
+            key: photo.id,
+            staticClass: "border",
+            attrs: { item: photo },
+            on: { like: _vm.onLikeClick }
+          })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c("Pagination", {
+        attrs: { "current-page": _vm.currentPage, "last-page": _vm.lastPage }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
