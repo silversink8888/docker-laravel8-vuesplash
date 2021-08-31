@@ -8,7 +8,7 @@
       text-white shadow-lg"
 
     @click="logout">
-      Logout/ feature/機能追加#1
+      Logout
     </button>
 
     

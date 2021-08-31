@@ -1,10 +1,11 @@
 <template>
-    <div v-show="value" class="photo-form">
+    <div v-show="value" 
+        class="absolute right-3 bg-white border-radius md:w-2/5 w-4/5 shadow max-h-96 max-w-96 overflow-scroll ">
         <!--
         <h2 class="title">Submit a photo/</h2>
         -->
 
-        <div v-show="loading" class="panel">
+        <div v-show="loading" class="border-1-green mt-1 p-5">
             <Loader>Sending your photo...</Loader>
         </div>
 
@@ -31,7 +32,7 @@
 
 
             <div class="">
-                <button type="submit" class="w-2/5 bg-black text-white p-2 m-2">
+                <button type="submit" class="hover:bg-gray-300 w-full bg-black text-white p-2 m-2">
                     Submit
                 </button>
             </div>
@@ -130,7 +131,7 @@ export default {
             this.$emit('input',false)
 
            // alert('CREATED  : ' + CREATED);
-            alert('response.status  : ' + response.status);
+           // alert('response.status  : ' + response.status);
             //
             if (response.status !== CREATED) {
                 this.$store.commit('error/setCode', response.status)

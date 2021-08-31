@@ -2698,6 +2698,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2789,12 +2790,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.reset();
 
                 _this2.$emit('input', false); // alert('CREATED  : ' + CREATED);
+                // alert('response.status  : ' + response.status);
+                //
 
-
-                alert('response.status  : ' + response.status); //
 
                 if (!(response.status !== _util__WEBPACK_IMPORTED_MODULE_1__.CREATED)) {
-                  _context.next = 16;
+                  _context.next = 15;
                   break;
                 }
 
@@ -2802,7 +2803,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 return _context.abrupt("return", false);
 
-              case 16:
+              case 15:
                 // メッセージ登録
                 _this2.$store.commit('message/setContent', {
                   content: '写真が投稿されました！',
@@ -2811,7 +2812,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this2.$router.push("/photos/".concat(response.data.id));
 
-              case 18:
+              case 17:
               case "end":
                 return _context.stop();
             }
@@ -11355,7 +11356,7 @@ var render = function() {
                 "my-2 px-4 py-2 w-1/5\n    border-2 border-blue-500 rounded-md\n    bg-gradient-to-b from-blue-600 to-blue-400\n    hover:from-blue-500 hover:to-blue-300 \n    text-white shadow-lg",
               on: { click: _vm.logout }
             },
-            [_vm._v("\n    Logout/ feature/機能追加#1\n  ")]
+            [_vm._v("\n    Logout\n  ")]
           )
         : _c(
             "RouterLink",
@@ -11939,7 +11940,8 @@ var render = function() {
           expression: "value"
         }
       ],
-      staticClass: "photo-form"
+      staticClass:
+        "absolute right-3 bg-white border-radius md:w-2/5 w-4/5 shadow max-h-96 max-w-96 overflow-scroll "
     },
     [
       _c(
@@ -11953,7 +11955,7 @@ var render = function() {
               expression: "loading"
             }
           ],
-          staticClass: "panel"
+          staticClass: "border-1-green mt-1 p-5"
         },
         [_c("Loader", [_vm._v("Sending your photo...")])],
         1
@@ -12034,7 +12036,7 @@ var staticRenderFns = [
       _c(
         "button",
         {
-          staticClass: "w-2/5 bg-black text-white p-2 m-2",
+          staticClass: "hover:bg-gray-300 w-full bg-black text-white p-2 m-2",
           attrs: { type: "submit" }
         },
         [_vm._v("\n                Submit\n            ")]
